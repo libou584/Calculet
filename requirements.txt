@@ -1,0 +1,7 @@
+numpy==2.1.0
+platformdirs==4.2.2
+pygame==2.6.0
+pyopencl==2024.2.7
+pytools==2024.1.13
+siphash24==1.6
+typing_extensions==4.12.2
