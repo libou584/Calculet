@@ -1,5 +1,6 @@
 import pyopencl as cl
 import numpy as np
+import pygame
 
 
 
@@ -34,7 +35,7 @@ def create_context(width, height):
 
     return queue, program, pixels_buffer
 
-def run_kernel(queue, program, pixels_buffer, width, height, time):
+def run_kernel(queue, program, pixels_buffer, width, height, time, screen):
     program.setPixels(queue, (width, height), None,
                         pixels_buffer, 
                         np.int32(width), 
@@ -42,7 +43,10 @@ def run_kernel(queue, program, pixels_buffer, width, height, time):
                         np.float32(time))
     
     result = np.empty((height, width, 4), dtype=np.uint8)
-
     cl.enqueue_copy(queue, result, pixels_buffer)
+    surface = pygame.image.frombuffer(result.tobytes(), (width, height), 'RGBA')
+    screen.blit(surface, (0, 0))
 
-    return result
+    s = pygame.Surface((width - 32, height - 32), pygame.SRCALPHA)
+    s.fill((255, 255, 255, 100))
+    screen.blit(s, (16, 16))
