@@ -66,3 +66,14 @@ def drawButtons(screen, buttons, sounds) :
     x, y = pygame.mouse.get_pos()
     for button in buttons :
         button.draw(screen, x, y, sounds)
+
+
+def buttonClicked(pos, buttons, sounds) :
+    x, y = pos
+    type = None
+    for button in buttons :
+        if button.mouseOver(x, y) :
+            type = button.type
+    if type is not None :
+        sounds[0].play()
+    return type

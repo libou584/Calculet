@@ -7,6 +7,7 @@ import src.display as dp
 
 
 def main() :
+
     width = 448
     height = 592
     x = 1920 - width
@@ -19,13 +20,13 @@ def main() :
     pygame.font.init()
     pygame.mixer.init()
 
-    font = pygame.font.Font("asset/font/futura.ttf", 24)
-    sounds = [pygame.mixer.Sound("asset/sounds/click.wav"), pygame.mixer.Sound("asset/sounds/hover.wav")]
-    sounds[0].set_volume(0.2)
-    sounds[1].set_volume(0.2)
+    font = pygame.font.Font("/home/lilian/Documents/hub_git_projects/Calculet/asset/font/futura.ttf", 24)
+    sounds = [pygame.mixer.Sound("/home/lilian/Documents/hub_git_projects/Calculet/asset/sounds/click.wav"), pygame.mixer.Sound("/home/lilian/Documents/hub_git_projects/Calculet/asset/sounds/hover.wav")]
+    sounds[0].set_volume(0.3)
+    sounds[1].set_volume(0.1)
 
     buttons = bt.loadButtons(font)
-    display = dp.Display("", "")
+    display = dp.Display("", "", font)
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Calculet")
@@ -36,8 +37,8 @@ def main() :
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            # elif event.type == pygame.MOUSEBUTTONDOWN :
-
+            elif event.type == pygame.MOUSEBUTTONDOWN :
+                display.update(bt.buttonClicked(pygame.mouse.get_pos(), buttons, sounds))
 
         time = pygame.time.get_ticks() / 1000.0
         bg.run_kernel(queue, program, pixels_buffer, width, height, time, screen)
