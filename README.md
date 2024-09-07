@@ -2,6 +2,10 @@
 
 (With the help of ChatGPT and Github Copilot)
 
+### Overview :
+
+Just a calculator
+
 ### Usage : 
 
 - Create a python virtual environment
