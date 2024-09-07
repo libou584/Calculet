@@ -13,6 +13,7 @@ def main() :
     x = 1920 - width
     y = 1080 - height
     os.environ['SDL_VIDEO_WINDOW_POS'] = f"{x},{y}"
+    project_path = os.environ['PROJECT_PATH']
 
     queue, program, pixels_buffer = bg.create_context(width, height)
     
@@ -20,8 +21,8 @@ def main() :
     pygame.font.init()
     pygame.mixer.init()
 
-    font = pygame.font.Font("/home/lilian/Documents/hub_git_projects/Calculet/asset/font/futura.ttf", 24)
-    sounds = [pygame.mixer.Sound("/home/lilian/Documents/hub_git_projects/Calculet/asset/sounds/click.wav"), pygame.mixer.Sound("/home/lilian/Documents/hub_git_projects/Calculet/asset/sounds/hover.wav")]
+    font = pygame.font.Font(project_path + "Calculet/asset/font/futura.ttf", 24)
+    sounds = [pygame.mixer.Sound(project_path + "Calculet/asset/sounds/click.wav"), pygame.mixer.Sound(project_path + "Calculet/asset/sounds/hover.wav")]
     sounds[0].set_volume(0.3)
     sounds[1].set_volume(0.1)
 
