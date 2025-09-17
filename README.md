@@ -1,7 +1,5 @@
 # Calculet
 
-(With the help of ChatGPT and Github Copilot)
-
 ### Overview :
 
 Just a calculator
